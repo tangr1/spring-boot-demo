@@ -31,7 +31,6 @@ public class TopicController {
     @Transactional
     public Topic create(final @RequestBody Topic request) {
         Topic topic = topicRepository.save(request);
-        // Create an ACL identity for this element
         ObjectIdentity identity = new ObjectIdentityImpl(topic);
         MutableAcl acl = mutableAclService.createAcl(identity);
 
@@ -53,7 +52,7 @@ public class TopicController {
     }
 
     @RequestMapping("/topics/{id}")
-    @PreAuthorize("hasPermission(#id, 'hello.data.Topic', 'administration')")
+    @PreAuthorize("hasPermission(#id, 'hello.domain.Topic', 'administration')")
     public Topic get(final @PathVariable Long id) {
         return topicRepository.findOne(id);
     }
