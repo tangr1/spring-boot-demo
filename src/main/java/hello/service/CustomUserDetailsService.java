@@ -1,7 +1,6 @@
 package hello.service;
 
 import hello.domain.User;
-import hello.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

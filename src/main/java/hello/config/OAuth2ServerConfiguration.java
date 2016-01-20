@@ -2,7 +2,6 @@ package hello.config;
 
 import hello.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -42,8 +41,8 @@ public class OAuth2ServerConfiguration {
             // @formatter:off
             http
                     .authorizeRequests()
-                    .antMatchers("/users").hasRole("ADMIN")
-                    .antMatchers("/greeting").authenticated();
+                    .antMatchers("/users").hasRole("ADMIN");
+            //.antMatchers("/**").authenticated();
             // @formatter:on
         }
 
@@ -57,7 +56,6 @@ public class OAuth2ServerConfiguration {
         private TokenStore tokenStore = new InMemoryTokenStore();
 
         @Autowired
-        @Qualifier("authenticationManagerBean")
         private AuthenticationManager authenticationManager;
 
         @Autowired

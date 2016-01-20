@@ -2,10 +2,7 @@ package hello.domain;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Topic {
@@ -17,8 +14,20 @@ public class Topic {
     private Long id;
 
     @NotEmpty
+    @Column(nullable = false)
     private String title;
+    @NotEmpty
+    @Column(nullable = false)
     private String content;
+
+    protected Topic() {
+
+    }
+
+    public Topic(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 
     public String getContent() {
         return content;

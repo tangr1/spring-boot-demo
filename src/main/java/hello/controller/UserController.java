@@ -1,7 +1,7 @@
 package hello.controller;
 
 import hello.domain.User;
-import hello.repository.UserRepository;
+import hello.service.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
